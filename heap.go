@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"runtime"
 	"strconv"
 
@@ -32,6 +33,10 @@ func main() {
 		fmt.Fprintln(w, s)
 	})
 
-	log.Println("Listening on port 8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	log.Printf("Listening on port %v", port)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }

@@ -1,0 +1,7 @@
+applications:
+  - name: go-heap
+    memory: 64M
+    docker:
+      image: docker.io/dotchev/go-heap
+    env:
+      GODEBUG: gctrace=1
